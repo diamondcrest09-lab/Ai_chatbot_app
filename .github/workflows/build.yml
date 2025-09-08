@@ -11,21 +11,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
+    - name: Build with Buildozer Docker
+      uses: Arthelon/buildozer-action@v1
       with:
-        python-version: "3.10"
-
-    - name: Install dependencies
-      run: |
-        sudo apt update
-        sudo apt install -y build-essential git python3-pip zip unzip openjdk-17-jdk
-        pip install --upgrade pip Cython==0.29.36
-        pip install buildozer
-
-    - name: Build APK
-      run: |
-        buildozer -v android debug
+        buildozer_version: latest
+        workdir: .
+        command: buildozer -v android debug
 
     - name: Upload APK
       uses: actions/upload-artifact@v2

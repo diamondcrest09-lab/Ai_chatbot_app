@@ -1,0 +1,3 @@
+title=Chatbot AI
+author=Diamondcrest
+orientation=portrait
